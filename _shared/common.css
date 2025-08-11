@@ -1,0 +1,84 @@
+@font-face {
+    font-family: 'Barriecito';
+    src: url('../_shared/fonts/Barriecito-Regular.ttf');
+    font-weight: 500;
+}
+
+:root {
+    --accent: #ab3b50;
+    --white: #fcfcfc;
+    --textbox-background-1: #d5287e;
+    --textbox-background-2: #cf239d;
+    --textbox-background-3: #bd2cd4;
+    --textbox-background-4: #ec3bb6;
+    --box-clip-1: polygon(0.1em 0.1em, calc(100% - 0.1em) 0, 100% 100%, 0.1em 100%);
+    --box-clip-2: polygon(0.1em 0.1em, 100% 0, calc(100% - 0.3em) 100%, 0.2em 100%);
+    --box-clip-3: polygon(0.1em 0.1em, calc(100% - 0.3em) 0, 100% 100%, 0.4em 100%);
+    --box-clip-4: polygon(0.1em 0.1em, calc(100% - 0.1em) 0, 100% 100%, 0 100%);
+    --box-clip-5: polygon(0.1em 0.2em, 100% 0, 100% 100%, 0.1em calc(100% - 0.2em));
+}
+
+/* .clip-wrapper {
+    filter: drop-shadow(8px 8px 0 black);
+} */
+
+.clip-container {
+    width: fit-content;
+    background: var(--white);
+    padding: 4px;
+    clip-path: var(--box-clip-1);
+}
+
+.clip-inside {
+    width: fit-content;
+    background: var(--textbox-background-1);
+    padding: 6px 24px;
+    min-height: 48px;
+    color: var(--white);
+    clip-path: var(--box-clip-1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.clip-text {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.clip-1 {
+    clip-path: var(--box-clip-1);
+}
+
+.clip-2 {
+    clip-path: var(--box-clip-2);
+}
+
+.clip-3 {
+    clip-path: var(--box-clip-3);
+}
+
+.clip-4 {
+    clip-path: var(--box-clip-4);
+}
+
+.clip-5 {
+    clip-path: var(--box-clip-5);
+}
+
+.clip-bg-1 {
+    background: var(--textbox-background-1);
+}
+
+.clip-bg-2 {
+    background: var(--textbox-background-2);
+}
+
+.clip-bg-3 {
+    background: var(--textbox-background-3);
+}
+
+.clip-bg-4 {
+    background: var(--textbox-background-4);
+}
