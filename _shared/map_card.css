@@ -1,0 +1,178 @@
+.current-pick-container {
+	position: absolute;
+	top: 160px;
+	right: 100px;
+}
+
+.map-background-outer-container {
+	position: relative;
+	transition: 300ms ease;
+}
+
+.map-background-content {
+	transition: 300ms ease;
+}
+
+.map-background-outer-container.picked {
+	filter:
+		drop-shadow(2px 2px 0 var(--white)) drop-shadow(-2px -2px 0 var(--white)) drop-shadow(2px -2px 0 var(--white)) drop-shadow(-2px 2px 0 var(--white)) drop-shadow(2px 0 0 var(--white)) drop-shadow(0 2px 0 var(--white)) drop-shadow(-2px 0 var(--white)) drop-shadow(0 -2px 0 var(--white));
+}
+
+.map-background-outer-container.picked::after {
+	content: '';
+	display: block;
+	position: absolute;
+	background-image: url('../_shared/assets/pick_indicator.png');
+	width: 180%;
+	height: 186%;
+	top: 50%;
+	left: 45%;
+	transform: translateX(-50%) translateY(-50%);
+	transform-origin: center;
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.map-background-outer-container.banned > * {
+	filter: contrast(0.7) sepia(1) grayscale(20%) hue-rotate(-80deg) saturate(7) brightness(0.7);
+}
+
+.map-background-outer-container.banned::after {
+	content: '';
+	display: block;
+	position: absolute;
+	background-image: url('../_shared/assets/ban_indicator.png');
+	width: 100%;
+	height: 160%;
+	top: 50%;
+	left: 80%;
+	transform: translateX(-50%) translateY(-50%);
+	transform-origin: center;
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.map-background-outer-container.past {
+	filter: contrast(1.2) grayscale(70%) saturate(1) brightness(0.5);
+}
+
+.map-background-inner-container {
+	filter: drop-shadow(0.3em 0.3em 0 black);
+}
+
+.map-labels {
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	filter: drop-shadow(0.25em 0.25em 0 black);
+}
+
+.map-background {
+	width: 19.6em;
+	height: 6.6em;
+	padding: 0;
+	background-color: #111111;
+	background-position: center;
+	background-size: cover;
+}
+
+.clip-map {
+	clip-path: var(--map-clip);
+}
+
+.map-teto {
+	position: absolute;
+	top: 8%;
+	right: 7%;
+	transform: translateX(50%) translateY(-50%) rotate(10deg);
+	width: 5.4em;
+	aspect-ratio: 1;
+	background-image: none;
+	background-size: contain;
+}
+
+.clip-inside {
+	padding: 0.25em 0.66em;
+	min-height: 1em;
+	font-size: 1em;
+}
+
+.map-stats-item {
+	position: absolute;
+}
+
+.wrapper__currentpick {
+	transform: rotate(-1deg);
+	transform-origin: bottom left;
+	top: -8%;
+	left: 43%;
+}
+
+.wrapper__slot {
+	transform: rotate(-8deg);
+	transform-origin: top left;
+	top: 7%;
+	left: -12%;
+}
+
+.wrapper__title {
+	transform: rotate(-1deg);
+	transform-origin: bottom left;
+	top: 62%;
+	left: -14%;
+}
+
+.wrapper__artist {
+	transform: rotate(-5deg);
+	transform-origin: top left;
+	top: 91%;
+	left: -4%;
+}
+
+.wrapper__diff {
+	transform: rotate(4deg);
+	transform-origin: top left;
+	top: 82%;
+	left: 38%;
+}
+
+.wrapper__cs {
+	transform: rotate(-3deg);
+	transform-origin: top right;
+	top: 34%;
+	right: -4%;
+}
+
+.wrapper__od {
+	transform: rotate(2deg);
+	transform-origin: top right;
+	top: 52%;
+	right: -4.3%;
+}
+
+.wrapper__ar {
+	transform: rotate(7deg);
+	transform-origin: top right;
+	top: 70%;
+	right: -4.7%;
+}
+
+.wrapper__sr {
+	transform: rotate(-3deg);
+	transform-origin: top right;
+	top: 82%;
+	right: 9%;
+}
+
+.inside__attrs {
+	justify-content: center;
+	padding: 0.05em 0.3em;
+}
+
+.inside__slot {
+	padding: 0.15em 0.75em;
+}
