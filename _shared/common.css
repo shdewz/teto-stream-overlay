@@ -82,3 +82,55 @@
 .clip-bg-4 {
     background: var(--textbox-background-4);
 }
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	padding: 28px 48px;
+	font-size: 29px;
+}
+
+.text-shadow {
+	text-shadow: 3px 3px 0 #64202e;
+}
+
+.stage-info-container {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	text-align: right;
+	margin-right: 12px;
+	font-size: 47px;
+}
+
+#round_label {
+	text-transform: uppercase;
+	margin-bottom: -12px;
+}
+
+.logo {
+	position: absolute;
+	bottom: 40px;
+	right: 40px;
+	width: 400px;
+	height: 270px;
+	background-image: url('../_shared/assets/logo.png');
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+	transform: rotate(-6deg);
+	animation: logo-sway 6s ease-in-out infinite;
+	z-index: 20;
+}
+
+@keyframes logo-sway {
+
+	0%,
+	100% {
+		transform: rotate(-9deg);
+	}
+
+	50% {
+		transform: rotate(-3deg);
+	}
+}
