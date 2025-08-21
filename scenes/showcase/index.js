@@ -5,8 +5,7 @@ let mappool;
 	$.ajaxSetup({ cache: false });
 	const stage = await $.getJSON('../../_data/beatmaps.json');
 	mappool = stage.beatmaps;
-	if (mappool) $('#round_label').text(stage.stage).css('opacity', 1);
-	else $('#stage_name').text('').css('opacity', 0);
+	if (mappool) $('#round_label').text(stage.stage);
 })();
 
 socket.onopen = () => { console.log('Successfully Connected'); };
@@ -21,12 +20,6 @@ const cache = {
 
 socket.onmessage = async event => {
 	const data = JSON.parse(event.data);
-
-	if (cache.state !== data.state.number) {
-		cache.state = data.state.number;
-		if (cache.state !== 2) $('#header').css('opacity', 0);
-		else $('#header').css('opacity', 1);
-	}
 
 	if (mappool && cache.md5 !== data.beatmap.checksum && !cache.stats_updated) {
 		cache.md5 = data.beatmap.checksum;
@@ -90,7 +83,7 @@ const getModStats = (cs_raw, ar_raw, od_raw, hp_raw, mods) => {
 	if (speed !== 1) od = Math.min((79.5 - (Math.min(79.5, Math.max(19.5, 79.5 - Math.ceil(6 * od))) / speed)) / 6, speed > 1.5 ? 12 : 11);
 
 	return { cs, ar, od, hp, ar_ms }
-}
+};
 
 const addTetoFish = (teto) => {
 	const teto_sway_container = $('<img>').attr('src', `../../_shared/assets/tetos/${teto}.gif`).addClass('teto-fish-sway-container');

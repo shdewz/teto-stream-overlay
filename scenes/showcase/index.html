@@ -8,7 +8,6 @@
 	<script src="../../_shared/deps/reconnecting-websocket.min.js"></script>
 	<script src="../../_shared/deps/jquery.min.js"></script>
 	<script src="../../_shared/utils.js"></script>
-	<script src="https://kit.fontawesome.com/3f04b9f9c1.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -16,16 +15,11 @@
 		<div class="header">
 			<div class="commentators text-shadow">Commentators</div>
 			<div class="stage-info-container">
-				<div class="stage-text text-shadow" id="round_label"></div>
+				<div class="stage-text text-shadow" id="round_label">ROUND 0</div>
 				<div class="stage-text text-shadow">Mappool Showcase</div>
 			</div>
 		</div>
 		<div class="map-background-outer-container">
-			<!-- <div class="map-background-container clip-wrapper" style="filter: none;">
-				<div class="clip-container clip-map">
-					<div class="clip-inside clip-map map-background" id="map_background"></div>
-				</div>
-			</div> -->
 			<div class="map-teto" id="teto"></div>
 		</div>
 		<div class="map-stats-container">
@@ -36,7 +30,7 @@
 					<div class="clip-container clip-1">
 						<div class="clip-inside clip-1 clip-bg-1"
 							style=" padding: 0 44px; justify-content: flex-start;">
-							<div class="clip-text" id="map_stats_slot">HD1</div>
+							<div class="clip-text" id="map_stats_slot">XX</div>
 						</div>
 					</div>
 				</div>
@@ -48,7 +42,7 @@
 					<div class="clip-container clip-1">
 						<div class="clip-inside clip-1 clip-bg-2" style="justify-content: flex-start;">
 							<div class="clip-text" id="map_stats_title" style="min-width: 300px; max-width: 400px;">Song
-								Title Very Long Title</div>
+								Title</div>
 						</div>
 					</div>
 				</div>
@@ -68,7 +62,7 @@
 					style="transform: rotate(4deg); font-size: 32px; transform-origin: top left;">
 					<div class="clip-container clip-2">
 						<div class="clip-inside clip-2 clip-bg-4" style="justify-content: center;">
-							<div class="clip-text" id="map_stats_diff" style="max-width: 400px;">Diff [Difficulty Name]
+							<div class="clip-text" id="map_stats_diff" style="max-width: 400px;">Diff [Difficulty]
 							</div>
 						</div>
 					</div>
@@ -120,29 +114,7 @@
 		</div>
 		<div class="greenscreen"></div>
 		<div class="logo"></div>
-		<div class="teto-fishtank" id="teto_fishtank">
-			<!-- <img class="teto-fish" src="../../_shared/assets/tetos/delusion.gif"> -->
-		</div>
-		<!-- <div class="map-timeline" id="map-timeline">
-			<div class="map-timeline-item">
-				<div class="map-timeline-slot">NM1</div>
-			</div>
-			<div class="map-timeline-item">
-				<div class="map-timeline-slot">NM1</div>
-			</div>
-			<div class="map-timeline-item">
-				<div class="map-timeline-slot">NM1</div>
-			</div>
-			<div class="map-timeline-item">
-				<div class="map-timeline-slot">NM1</div>
-			</div>
-			<div class="map-timeline-item">
-				<div class="map-timeline-slot">NM1</div>
-			</div>
-			<div class="map-timeline-item">
-				<div class="map-timeline-slot">NM1</div>
-			</div>
-		</div> -->
+		<div class="teto-fishtank" id="teto_fishtank"></div>
 	</div>
 	<script src="index.js"></script>
 </body>
