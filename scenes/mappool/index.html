@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../_shared/common.css">
+    <link rel="stylesheet" href="../../_shared/map_card.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="../../_shared/deps/reconnecting-websocket.min.js"></script>
+    <script src="../../_shared/deps/jquery.min.js"></script>
+    <script src="../../_shared/utils.js"></script>
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+            <div class="commentators text-shadow">Commentators</div>
+            <div class="stage-info-container">
+                <div class="stage-text text-shadow" id="round_label">ROUND 0</div>
+                <div class="stage-text text-shadow">Pools & Pick Order</div>
+            </div>
+        </div>
+        <div class="mappool-container" id="mappool_container"></div>
+        <div class="current-pick-container">
+            <div class="map-background-outer-container" style="font-size: 24px;">
+                <div class="map-background-inner-container">
+                    <div class="map-background-container clip-wrapper" style="filter: none;">
+                        <div class="clip-container clip-map">
+                            <div class="clip-inside clip-map map-background" id="map_background"></div>
+                        </div>
+                    </div>
+                    <div class="map-teto" id="teto"></div>
+                </div>
+                <div class="map-labels">
+                    <div class="map-stats-item clip-wrapper wrapper__currentpick">
+                        <div class="clip-container clip-2">
+                            <div class="clip-inside clip-2 clip-bg-2">
+                                <div class="clip-text" style="font-size: 1.3em;">Current Pick</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="map-stats-item clip-wrapper wrapper__slot">
+                        <div class="clip-container clip-1">
+                            <div class="clip-inside clip-1 clip-bg-1 inside__slot">
+                                <div class="clip-text" id="map_stats_slot" style="font-size: 2.3em;">
+                                    XX</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="map-stats-item clip-wrapper wrapper__title">
+                        <div class="clip-container clip-1">
+                            <div class="clip-inside clip-1 clip-bg-2">
+                                <div class="clip-text" id="map_stats_title" style="min-width: 6.6em; max-width: 8.3em;">
+                                    Title</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="map-stats-item clip-wrapper wrapper__artist">
+                        <div class="clip-container clip-2">
+                            <div class="clip-inside clip-2 clip-bg-3">
+                                <div class="clip-text" id="map_stats_artist"
+                                    style="min-width: 5em; max-width: 7.8em; font-size: 0.83em;">
+                                    Artist</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="map-stats-item clip-wrapper wrapper__diff">
+                        <div class="clip-container clip-2">
+                            <div class="clip-inside clip-2 clip-bg-4">
+                                <div class="clip-text" id="map_stats_diff" style="max-width: 7.1em; font-size: 0.83em;">
+                                    Diff [Diff]</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="map-stats-item clip-wrapper wrapper__cs">
+                        <div class="clip-container clip-4">
+                            <div class="clip-inside clip-4 clip-bg-2 inside__attrs">
+                                <div class="clip-text" id="map_stats_cs" style="font-size: 0.75em;">
+                                    CS 0.0</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="map-stats-item clip-wrapper wrapper__od">
+                        <div class="clip-container clip-5">
+                            <div class="clip-inside clip-5 clip-bg-2 inside__attrs">
+                                <div class="clip-text" id="map_stats_od" style="font-size: 0.75em;">
+                                    OD 0.0</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="map-stats-item clip-wrapper wrapper__ar">
+                        <div class="clip-container clip-4">
+                            <div class="clip-inside clip-4 clip-bg-2 inside__attrs">
+                                <div class="clip-text" id="map_stats_ar" style="font-size: 0.75em;">
+                                    AR 0.0</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="map-stats-item clip-wrapper wrapper__sr">
+                        <div class="clip-container clip-4">
+                            <div class="clip-inside clip-4 clip-bg-2 inside__attrs">
+                                <div class="clip-text" id="map_stats_sr" style="font-size: 0.75em;">
+                                    0.00★</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="chat-container">
+            <div class="chat-background-container clip-wrapper">
+                <div class="clip-container clip-chat">
+                    <div class="clip-inside clip-chat chat-background">
+                        <div class="chat" id="chat"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-title-container">
+                <div class="clip-container clip-4">
+                    <div class="clip-inside clip-4 clip-bg-1 inside-chat-title">
+                        <div class="clip-text">CHAT</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="logo"></div>
+        <div class="map-timeline" id="map-timeline"></div>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>

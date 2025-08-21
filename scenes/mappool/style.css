@@ -1,0 +1,172 @@
+body,
+html {
+	padding: 0;
+	margin: 0;
+	/* overflow-y: hidden; */
+}
+
+:root {
+	--width: 1920px;
+	--height: 1080px;
+	--footer-height: 160px;
+	--map-clip: polygon(0 46%, 8% 22%, 76% 0, 98% 14%, 100% 82%, 80% 92%, 46% 100%, 3% 92%);
+	--chat-clip: polygon(0 12%, 19% 4%, 66% 0, 100% 5%, 98% 100%, 25% 93%, 5% 86%);
+	;
+	/* background-color: black; */
+}
+
+.main {
+	position: relative;
+	width: var(--width);
+	height: var(--height);
+	color: var(--white);
+	font-family: 'Barriecito';
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.main::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: -10;
+	background-image: url('../../_shared/assets/pool_guide.png');
+	opacity: 0;
+	filter: brightness(0.2);
+}
+
+.main::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: -9;
+	background-image: url('../../_shared/assets/bg.png');
+	opacity: 1;
+}
+
+.mappool-container {
+	position: absolute;
+	display: flex;
+	width: 1110px;
+	top: 100px;
+	left: 80px;
+	gap: 86px;
+	row-gap: 52px;
+	flex-wrap: wrap;
+}
+
+.chat-container {
+	position: absolute;
+	bottom: 140px;
+	right: 70px;
+}
+
+.chat-background {
+	width: 560px;
+	height: 540px;
+	background-color: #bc1337;
+}
+
+.chat-background-container {
+	filter: drop-shadow(6px 6px 0 black);
+}
+
+.clip-chat {
+	clip-path: var(--chat-clip);
+}
+
+.chat-title-container {
+	position: absolute;
+	top: -20px;
+	right: -20px;
+	transform: rotate(8deg);
+	font-size: 4rem;
+	filter: drop-shadow(6px 6px 0 black);
+}
+
+.inside-chat-title {
+	padding: 2px 16px;
+}
+
+.chat {
+	position: absolute;
+	top: 10%;
+	left: 5%;
+	width: 88%;
+	height: 70%;
+	padding: 4px;
+	transform: rotate(-4deg);
+	overflow: hidden;
+	font-size: 1.3rem;
+	display: flex;
+	flex-direction: column-reverse;
+	gap: 3px;
+}
+
+.chat-message {
+	display: flex;
+	gap: 8px;
+}
+
+.chat-name::after {
+	content: ':';
+}
+
+.map-timeline {
+	display: flex;
+	position: absolute;
+	bottom: 34px;
+	left: 34px;
+	gap: 8px;
+}
+
+.map-timeline-item {
+	width: 65px;
+	height: 104px;
+	background-color: var(--accent);
+	border: 3px solid var(--white);
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: center;
+	opacity: 0.4;
+}
+
+.map-timeline-item:last-child {
+	opacity: 1;
+}
+
+.map-timeline-item:last-child::after {
+	content: '';
+	display: block;
+	position: absolute;
+	width: 34px;
+	height: 29px;
+	top: -36px;
+	background-image: url('../../_shared/assets/pick_triangle.png');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	animation: triangle_hover 1s ease alternate infinite;
+}
+
+@keyframes triangle_hover {
+	from {
+		transform: translateY(0);
+	}
+	to {
+		transform: translateY(-12px);
+	}
+}
+
+.map-timeline-slot {
+	padding: 4px 0;
+	font-size: 24px;
+}
