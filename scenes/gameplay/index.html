@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../_shared/common.css">
+    <link rel="stylesheet" href="../../_shared/map_card.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="../../_shared/deps/reconnecting-websocket.min.js"></script>
+    <script src="../../_shared/deps/jquery.min.js"></script>
+    <script src="../../_shared/deps/countUp.js"></script>
+    <script src="../../_shared/utils.js"></script>
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+            <div class="commentators text-shadow" id="round_label">ROUND 0</div>
+            <div class="commentators text-shadow">Commentators</div>
+        </div>
+        <div class="logo"></div>
+        <div class="gameplay-area" id="gameplay_area"></div>
+        <div class="leaderboard-container">
+            <div class="leaderboard-background-container clip-wrapper">
+                <div class="clip-container clip-leaderboard">
+                    <div class="clip-inside clip-leaderboard leaderboard-background">
+                        <div class="leaderboard" id="leaderboard"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="leaderboard-title-container">
+                <div class="clip-container clip-4">
+                    <div class="clip-inside clip-4 clip-bg-1 inside-leaderboard-title">
+                        <div class="clip-text">Danger Zone</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="current-pick-container">
+            <div class="map-background-outer-container" style="font-size: 24px;">
+                <div class="map-background-inner-container">
+                    <div class="map-background-container clip-wrapper" style="filter: none;">
+                        <div class="clip-container clip-map">
+                            <div class="clip-inside clip-map map-background" id="map_background"></div>
+                        </div>
+                    </div>
+                    <div class="map-teto" id="teto"></div>
+                </div>
+                <div class="map-labels">
+                    <div class="map-stats-item clip-wrapper wrapper__slot">
+                        <div class="clip-container clip-1">
+                            <div class="clip-inside clip-1 clip-bg-1 inside__slot">
+                                <div class="clip-text" id="map_stats_slot" style="font-size: 2.3em;">
+                                    XX</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="map-stats-item clip-wrapper wrapper__title">
+                        <div class="clip-container clip-1">
+                            <div class="clip-inside clip-1 clip-bg-2">
+                                <div class="clip-text" id="map_stats_title" style="width: 9.4em;">
+                                    Title</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="map-stats-item clip-wrapper wrapper__artist">
+                        <div class="clip-container clip-2">
+                            <div class="clip-inside clip-2 clip-bg-3">
+                                <div class="clip-text" id="map_stats_artist" style="width: 7em; font-size: 0.83em;">
+                                    Artist</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="index.js"></script>
+    </div>
+</body>
+
+</html>

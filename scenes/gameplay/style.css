@@ -1,0 +1,267 @@
+body,
+html {
+	padding: 0;
+	margin: 0;
+	/* overflow-y: hidden; */
+}
+
+:root {
+	--width: 1920px;
+	--height: 1080px;
+	--footer-height: 160px;
+	--map-clip: polygon(0 46%, 8% 22%, 76% 0, 98% 14%, 100% 82%, 80% 92%, 46% 100%, 3% 92%);
+	--chat-clip: polygon(0 8%, 19% 1%, 66% 0, 100% 3%, 98% 92%, 80% 100%, 32% 98%, 6% 92%);
+	/* background-color: black; */
+}
+
+.main {
+	position: relative;
+	width: var(--width);
+	height: var(--height);
+	color: var(--white);
+	font-family: 'Barriecito';
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.main::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: -10;
+	background-image: url('../../_shared/assets/gameplay_guide.png');
+	opacity: 0;
+	filter: brightness(0.2);
+}
+
+.main::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: -9;
+	background-image: url('../../_shared/assets/bg.png');
+	mask-image: url('../../_shared/assets/masks/gameplay_mask.svg');
+	opacity: 1;
+}
+
+/* override from common.css */
+.header {
+	justify-content: flex-start;
+	padding-left: 260px;
+	gap: 330px;
+}
+
+/* override from common.css */
+.logo {
+	top: 12px;
+	left: 20px;
+	width: 188px;
+	height: 119px;
+	background-image: url('../../_shared/assets/logo_small.png');
+}
+
+.gameplay-area {
+	position: absolute;
+	top: 174px;
+	left: 47px;
+	width: 1366px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	row-gap: 7px;
+	font-size: 24px;
+}
+
+.gameplay-client {
+	position: relative;
+	--border: 3px;
+	width: calc(320px + 2 * var(--border));
+	height: calc(240px + 2 * var(--border));
+}
+
+.gameplay-content {
+	width: calc(100% - 2 * var(--border));
+	height: calc(100% - 2 * var(--border));
+	background-color: transparent;
+	border: var(--border) solid var(--white);
+	transition: 300ms ease;
+}
+
+.gameplay-labels {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	filter: drop-shadow(5px 5px 0 black);
+}
+
+/* override from common.css */
+.clip-inside {
+	min-height: 1em;
+	padding: 0.2em 0.4em;
+}
+
+.gameplay-labels>.clip-container {
+	position: absolute;
+}
+
+.label__name {
+	bottom: -5px;
+	left: -15px;
+	transform: rotate(-2deg);
+}
+
+.label__combo {
+	bottom: -4px;
+	right: -8px;
+	transform: rotate(5deg);
+	text-align: right;
+}
+
+.label__score {
+	top: -9px;
+	right: -12px;
+	transform: rotate(-3deg);
+	text-align: right;
+}
+
+.label__acc {
+	top: 25px;
+	right: -6px;
+	transform: rotate(3deg);
+	text-align: center;
+}
+
+.gameplay-client.eliminated>* {
+	filter: brightness(0.5);
+	background-color: rgba(0, 0, 0, 0.7);
+}
+
+.gameplay-client.eliminated::after {
+	content: '';
+	display: block;
+	position: absolute;
+	background-image: url('../../_shared/assets/eliminated_mark.png');
+	width: 171px;
+	height: 193px;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+	transform-origin: center;
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.leaderboard-container {
+	position: absolute;
+	bottom: 160px;
+	right: 46px;
+}
+
+.leaderboard-background {
+	width: 432px;
+	height: 680px;
+	background-color: #bc1337;
+}
+
+.leaderboard-background-container {
+	filter: drop-shadow(6px 6px 0 black);
+}
+
+.clip-leaderboard {
+	position: relative;
+	clip-path: var(--chat-clip);
+}
+
+.leaderboard-title-container {
+	position: absolute;
+	bottom: -32px;
+	left: 60%;
+	transform-origin: center;
+	transform: rotate(-5deg) translateX(-50%);
+	font-size: 3rem;
+	filter: drop-shadow(6px 6px 0 black);
+}
+
+.inside-leaderboard-title {
+	padding: 8px 24px;
+}
+
+.leaderboard {
+	display: flex;
+	flex-direction: column-reverse;
+	gap: 24px;
+	font-size: 1.8rem;
+	transform: rotate(-2deg);
+}
+
+.leaderboard-item {
+	display: flex;
+	gap: 24px;
+	align-items: center;
+}
+
+.leaderboard-item:nth-of-type(n+7) {
+	display: none;
+}
+
+.leaderboard-rank {
+	font-size: 3.8rem;
+	width: 112px;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.leaderboard-rank::before {
+	content: '#';
+}
+
+.leaderboard-data {
+	display: flex;
+	flex-direction: column;
+	width: 250px;
+}
+
+.clip-container {
+	position: relative;
+}
+
+.current-pick-container {
+	top: 98px;
+	right: 50px;
+}
+
+.map-background {
+	width: 15em;
+	height: 5em;
+}
+
+.wrapper__slot {
+	transform: rotate(-8deg);
+	transform-origin: bottom left;
+	top: -6%;
+	left: -4%;
+}
+
+.wrapper__title {
+	transform: rotate(4deg);
+	transform-origin: bottom left;
+	top: 68%;
+	left: -14%;
+}
+
+.wrapper__artist {
+	transform: rotate(-2deg);
+	transform-origin: top left;
+	top: 74%;
+	left: unset;
+	right: -3%;
+}
