@@ -176,7 +176,7 @@ socket.onmessage = async event => {
                 $('#leaderboard').html('');
                 leaderboard.clear();
                 leaderboard_animation = {};
-                for (const player of players_in_lobby) {
+                for (const player of players_in_lobby.filter(e => e.name !== '')) {
                     const lb_item = new LeaderboardItem(player);
                     lb_item.generate();
                     $('#leaderboard').append(lb_item.parent);
