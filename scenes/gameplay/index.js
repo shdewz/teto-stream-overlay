@@ -192,7 +192,9 @@ socket.onmessage = async event => {
                 const client_obj = clients.get(id);
 
                 const mods = client.play?.mods?.array ?? [];
-                const score = (client.play?.score ?? 0) / ((mods.includes('HD') && !cache.map.mods.includes('HD')) ? 1.06 : 1);
+                const map_hd = cache.map?.mods?.includes('HD') ?? false;
+                const hd_reduction = mods.includes('HD') && !map_hd;
+                const score = (client.play?.score ?? 0) / (hd_reduction ? 1.06 : 1);
 
                 client_obj.animation.score.update(score);
                 client_obj.animation.acc.update(client.play?.accuracy ?? 0);
