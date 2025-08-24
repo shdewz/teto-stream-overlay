@@ -134,3 +134,104 @@
 		transform: rotate(-3deg);
 	}
 }
+
+.teto-fishtank {
+	position: relative;
+	width: 1500px;
+}
+
+.teto-fish-sway-container {
+	height: 170px;
+	animation-name: teto-sway;
+	animation-duration: 2s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite;
+}
+
+.teto-fish-jump-container {
+	position: absolute;
+	bottom: 0;
+	filter: drop-shadow(4px 4px 0 black);
+}
+
+.teto-jump-activate {
+	animation-name: teto-jump;
+	animation-duration: 0.5s;
+	animation-timing-function: cubic-bezier(.31, .41, .44, 1.61);
+	animation-iteration-count: 1;
+}
+
+.teto-fish-move-container {
+	animation-name: teto-wander;
+	animation-duration: 20s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite;
+}
+
+@keyframes teto-wander {
+
+	0%,
+	100% {
+		transform: translateX(0) scaleX(100%);
+	}
+
+	3% {
+		transform: translateX(0) scaleX(-100%);
+	}
+
+	50% {
+		transform: translateX(1340px) scaleX(-100%);
+	}
+
+	53% {
+		transform: translateX(1340px) scaleX(100%);
+	}
+}
+
+@keyframes teto-sway {
+
+	0%,
+	100% {
+		transform: rotate(-5deg);
+	}
+
+	50% {
+		transform: rotate(5deg);
+	}
+}
+
+@keyframes teto-jump {
+
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+
+	50% {
+		transform: translateY(-80px);
+	}
+}
+
+.chat {
+	position: absolute;
+	top: 10%;
+	left: 5%;
+	width: 88%;
+	height: 68.5%;
+	padding: 4px;
+	transform: rotate(-4deg);
+	overflow: hidden;
+	font-size: 1.3rem;
+	display: flex;
+	flex-direction: column-reverse;
+	gap: 3px;
+}
+
+.chat-message {
+	display: flex;
+	gap: 8px;
+}
+
+.chat-name::after {
+	content: ':';
+}
