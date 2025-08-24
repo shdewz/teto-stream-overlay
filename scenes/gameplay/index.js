@@ -1,12 +1,21 @@
-const socket = new ReconnectingWebSocket('ws://' + location.host + '/websocket/v2');
-// const socket = new ReconnectingWebSocket('ws://127.0.0.1:24051/'); // for debug
+// const socket = new ReconnectingWebSocket('ws://' + location.host + '/websocket/v2');
+const socket = new ReconnectingWebSocket('ws://127.0.0.1:24051/'); // for debug
 
 let mappool;
 (async () => {
     $.ajaxSetup({ cache: false });
     const stage = await $.getJSON('../../_data/beatmaps.json');
     mappool = stage.beatmaps;
-    if (mappool) $('#round_label').text(stage.stage);
+    if (mappool) {
+        $('#round_label').text(stage.stage);
+        for (const map of mappool) {
+            if (map.teto) {
+                setTimeout(() => {
+                    addTetoFish(map.teto);
+                }, Math.random() * 10000);
+            }
+        }
+    }
 })();
 
 socket.onopen = () => { console.log('Successfully Connected'); };
@@ -15,7 +24,8 @@ socket.onerror = error => { console.log('Socket Error: ', error); };
 
 const cache = {
     setup_complete: false,
-    last_leaderboard_update: 0
+    last_leaderboard_update: 0,
+    chat_enabled: false
 };
 
 const clients = new Map();
@@ -186,6 +196,7 @@ socket.onmessage = async event => {
         }
 
         if (cache.scoreVisible) {
+            const lowest_score = Math.min(...data.tourney.clients.filter(e => e.user.name !== '').map(e => e.play.score / (e.play?.mods?.array.includes('HD') && !cache.map?.mods?.includes('HD') ? 1.06 : 1)));
             for (const client of data.tourney.clients) {
                 const id = client.ipcId + 1;
                 if (eliminated.includes(id)) continue;
@@ -193,8 +204,7 @@ socket.onmessage = async event => {
 
                 const mods = client.play?.mods?.array ?? [];
                 const map_hd = cache.map?.mods?.includes('HD') ?? false;
-                const hd_reduction = mods.includes('HD') && !map_hd;
-                const score = (client.play?.score ?? 0) / (hd_reduction ? 1.06 : 1);
+                const score = (client.play?.score ?? 0) / (mods.includes('HD') && !map_hd ? 1.06 : 1);
 
                 client_obj.animation.score.update(score);
                 client_obj.animation.acc.update(client.play?.accuracy ?? 0);
@@ -202,6 +212,9 @@ socket.onmessage = async event => {
 
                 const lb_item = leaderboard.get(client.user.id);
                 if (lb_item) { lb_item.score = score; lb_item.animation.update(score) };
+
+                if (score === lowest_score && score > 0) client_obj.parent.addClass('danger');
+                else client_obj.parent.removeClass('danger');
             }
 
             // update leaderboard every 300ms
@@ -229,5 +242,37 @@ socket.onmessage = async event => {
                 }
             }
         }
+
+        if (cache.chatLen !== data.tourney.chat.length) {
+            const current_chat_len = data.tourney.chat.length;
+            if (cache.chatLen === 0 || (cache.chatLen > 0 && cache.chatLen > current_chat_len)) { $('#chat').html(''); cache.chatLen = 0; }
+
+            for (let i = cache.chatLen || 0; i < current_chat_len; i++) {
+                const chat = data.tourney.chat[i];
+                const body = chat.message;
+                const timestamp = chat.timestamp;
+                if (body.toLowerCase().startsWith('!mp')) continue;
+
+                const player = chat.name;
+                if (player === 'BanchoBot' && body.startsWith('Match history')) continue;
+
+                const chatParent = $('<div></div>').addClass(`chat-message ${chat.team}`);
+
+                chatParent.append($('<div></div>').addClass('chat-time').text(timestamp));
+                chatParent.append($('<div></div>').addClass(`chat-name ${chat.team}`).text(player));
+                chatParent.append($('<div></div>').addClass('chat-body').text(body));
+                $('#chat').prepend(chatParent);
+            }
+
+            cache.chatLen = data.tourney.chat.length;
+            cache.chat_loaded = true;
+        }
     }
 }
+
+const toggleChat = () => {
+    $('#chat').css('display', cache.chat_enabled ? 'none' : 'flex');
+    $('#leaderboard').css('display', cache.chat_enabled ? 'flex' : 'none');
+    $('#leaderboard_title').text(cache.chat_enabled ? 'Danger Zone' : 'CHAT');
+    cache.chat_enabled = !cache.chat_enabled;
+};

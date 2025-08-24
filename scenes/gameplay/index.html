@@ -13,6 +13,9 @@
 </head>
 
 <body>
+    <div class="controls">
+        <div class="button control-item" id="toggle_chat" onclick="toggleChat()">TOGGLE CHAT</div>
+    </div>
     <div class="main">
         <div class="header">
             <div class="commentators text-shadow" id="round_label">ROUND 0</div>
@@ -25,13 +28,14 @@
                 <div class="clip-container clip-leaderboard">
                     <div class="clip-inside clip-leaderboard leaderboard-background">
                         <div class="leaderboard" id="leaderboard"></div>
+                        <div class="chat" id="chat" style="display: none;"></div>
                     </div>
                 </div>
             </div>
             <div class="leaderboard-title-container">
                 <div class="clip-container clip-4">
                     <div class="clip-inside clip-4 clip-bg-1 inside-leaderboard-title">
-                        <div class="clip-text">Danger Zone</div>
+                        <div class="clip-text" id="leaderboard_title">Danger Zone</div>
                     </div>
                 </div>
             </div>
@@ -74,6 +78,7 @@
                 </div>
             </div>
         </div>
+        <div class="teto-fishtank" id="teto_fishtank"></div>
         <script src="index.js"></script>
     </div>
 </body>
