@@ -1,5 +1,5 @@
-// const socket = new ReconnectingWebSocket('ws://' + location.host + '/websocket/v2');
-const socket = new ReconnectingWebSocket('ws://127.0.0.1:24051/'); // for debug
+const socket = new ReconnectingWebSocket('ws://' + location.host + '/websocket/v2');
+// const socket = new ReconnectingWebSocket('ws://127.0.0.1:24051/'); // for debug
 
 let mappool;
 (async () => {
