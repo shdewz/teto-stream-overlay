@@ -95,30 +95,6 @@ html {
 	padding: 2px 16px;
 }
 
-.chat {
-	position: absolute;
-	top: 10%;
-	left: 5%;
-	width: 88%;
-	height: 68.5%;
-	padding: 4px;
-	transform: rotate(-4deg);
-	overflow: hidden;
-	font-size: 1.3rem;
-	display: flex;
-	flex-direction: column-reverse;
-	gap: 3px;
-}
-
-.chat-message {
-	display: flex;
-	gap: 8px;
-}
-
-.chat-name::after {
-	content: ':';
-}
-
 .map-timeline {
 	display: flex;
 	position: absolute;
