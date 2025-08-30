@@ -120,6 +120,7 @@ const eliminateClient = (client) => {
     client_obj.animation.score.update(0);
     client_obj.animation.acc.update(0);
     client_obj.animation.combo.update(0);
+    client_obj.parent.removeClass('danger');
     eliminated.push(client.id);
 };
 
@@ -202,9 +203,11 @@ socket.onmessage = async event => {
                 if (eliminated.includes(id)) continue;
                 const client_obj = clients.get(id);
 
-                const mods = client.play?.mods?.array ?? [];
-                const map_hd = cache.map?.mods?.includes('HD') ?? false;
-                const score = (client.play?.score ?? 0) / (mods.includes('HD') && !map_hd ? 1.06 : 1);
+                let score = client.play?.score ?? 0;
+                if (!cache.map || !cache.map?.mods?.includes('HD')) {
+                    const mods = client.play?.mods?.array ?? [];
+                    if (mods.includes('HD')) score /= 1.06;
+                }
 
                 client_obj.animation.score.update(score);
                 client_obj.animation.acc.update(client.play?.accuracy ?? 0);
